@@ -34,8 +34,8 @@ export class DataService {
     public dashboard!: DashboardComponent;
 
     public yearTenure: boolean = true;
-    public chart!: BarChartComponent;
-    public treegrid!: TreeGridAppComponent;
+    public chart!: Chart;
+    public treegrid!: TreeGrid;
     public totalPrincipalYear: number = 0;
     public totalInterestYear: number = 0;
     public inter!: number;
@@ -87,7 +87,7 @@ export class DataService {
         this.refreshUI1();
         this.calRangeValues();
         this.renderControls();
-        this.chart.chartObj.refresh();
+        this.chart.refresh();
     }
 
     public updateTotalAmt(): void {        
@@ -98,8 +98,8 @@ export class DataService {
     }
 
     public renderControls(): void {
-        this.treegrid.yearWiseData = this.yearWiseData;
-        this.chart.chartObj.series = [
+        this.treegrid.dataSource = this.yearWiseData;
+        this.chart.series = [
             // {
             //     type: 'Column',
             //     columnWidth: 0.7,

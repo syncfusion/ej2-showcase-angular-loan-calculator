@@ -1,6 +1,6 @@
 <div class="row top-space loan-content max-content">
     <h6 class="center-heading">Amortization Schedule</h6>
-    <ejs-treegrid #scheduleGrid id='scheduleGrid' [dataSource]='yearWiseData'  width="100%" childMapping='childRecord' [enableCollapseAll]="true">
+    <ejs-treegrid #treegrid id='scheduleGrid' [dataSource]='yearWiseData'  width="100%" childMapping='childRecord' [enableCollapseAll]="true">
         <e-columns>
             <e-column field='year' headerText='Year/Month' minWidth='80px' textAlign="center"></e-column>
             <e-column field='yearTotal' headerText='Payment' minWidth='80px' textAlign="center" [format]="format" [hideAtMedia]="paymentHideAtMedia">

@@ -212,5 +212,6 @@ export class BarChartComponent implements OnInit {
     }
 
     public ngAfterViewInit(): void {
+        this.data.chart = this.chartObj;
     }
 }
