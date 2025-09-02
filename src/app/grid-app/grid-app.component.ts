@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { closest } from '@syncfusion/ej2-base';
 import { TreeGridComponent } from '@syncfusion/ej2-angular-treegrid';
 import { TreeGrid } from '@syncfusion/ej2-treegrid';
@@ -11,16 +11,15 @@ import { DataService } from '../data-service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class TreeGridAppComponent implements OnInit {
+export class TreeGridAppComponent implements AfterViewInit {
 
     /** Configurations for the Grid page */
-    constructor(private data: DataService) {
+    constructor(private dataService: DataService) {
     }
 
-    @ViewChild('scheduleGrid')
-    public treegrid!: TreeGrid;
+    @ViewChild('treegrid') treegrid!: TreeGrid;
 
-    public yearWiseData: Object[] = this.data.yearWiseData;
+    public yearWiseData: Object[] = this.dataService.yearWiseData;
     public format: string = 'c0';
     public balanceHideAtMedia: string = '(min-width: 750px)';
     public paymentHideAtMedia: string = '(min-width: 480px)';
@@ -29,5 +28,6 @@ export class TreeGridAppComponent implements OnInit {
     }
 
     public ngAfterViewInit(): void {
+      this.dataService.treegrid = this.treegrid;
     }
 }
